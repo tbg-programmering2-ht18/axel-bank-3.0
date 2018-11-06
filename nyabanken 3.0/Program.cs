@@ -16,7 +16,7 @@ namespace nyabanken_3._0
             int choice = 0;
             while (choice != 7)
             {
-                Console.WriteLine("Welcome to Axel's Big Bank!");
+                Console.WriteLine("Welcome to  Big Bank!");
 
                 Console.WriteLine("");
                 Console.WriteLine("Pick your poison!");
