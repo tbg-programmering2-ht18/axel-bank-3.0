@@ -16,10 +16,10 @@ namespace nyabanken_3._0
             int choice = 0;
             while (choice != 7)
             {
-                Console.WriteLine("Welcome to  Big Bank!");
+                Console.WriteLine("Welcome to AXEL'S  Big Bank!");
 
                 Console.WriteLine("");
-                Console.WriteLine("Pick your poison!");
+                Console.WriteLine("Pick your choises!");
                 Console.WriteLine("");
                 Console.WriteLine("1 : Add new customer");
                 Console.WriteLine("2 : Show all customer");
@@ -36,13 +36,13 @@ namespace nyabanken_3._0
                 }
                 catch
                 {
-                    Console.WriteLine("det blev knas");
+                    Console.WriteLine("whopsssssss.....");
                     Console.ReadLine();
                 }
 
                 switch (choice)
                 {
-
+                    
                     case 1:
                         Console.Clear();
                         Console.WriteLine("Add customer");
@@ -69,28 +69,31 @@ namespace nyabanken_3._0
                         removeCustomer();
                         break;
 
-                    case 4:
-                        Console.Clear();
-                        Console.WriteLine("");
-                        Console.WriteLine("Ooops... still under construction");
-                        /*foreach (Customer info in customerlist)
-                        {
-                            Console.WriteLine(info.customerInfo());
-                        }*/
-                        Console.ReadKey();
+                    case 5:
+                        // this code is not 100% done but work kinda.
+                     Console.Clear();
+                     Console.WriteLine("");
+                     Console.WriteLine("Write the full name of the customer you'd like to make a deposit!");
+                      // here you put in money in the bank, but doesnt work right now
+                     int customerBalanceAdd = int.Parse(Console.ReadLine());
+                     Customer balanceToAdd = customerlist[customerBalanceAdd - 1];
+                     Console.WriteLine("How much money does you want put in the bank");
+
+                            customerBalanceAdd = int.Parse(Console.ReadLine());
+                        balanceToAdd.balance += customerBalanceAdd;
+                            
                         Console.Clear();
                         break;
 
-                    case 5:
+                    case 4:
+               
                         Console.Clear();
                         Console.WriteLine("");
-                        Console.WriteLine("Ooops... still under construction");
-                        /*foreach (Customer info in customerlist)
-                        {
-                            Console.WriteLine(info.customerInfo());
-                        }
-                        addBalance();*/
-                        Console.ReadKey();
+                        Console.WriteLine("What customer?");
+                        int customerwho = int.Parse(Console.ReadLine());
+                        Console.WriteLine(customerlist[customerwho -1].balance);
+                        Console.ReadLine();
+
                         Console.Clear();
                         break;
 
@@ -119,38 +122,29 @@ namespace nyabanken_3._0
             customer.name = name;
             customerlist.Add(customer);
         }
-
-        //Här är funktionen som tar bort en användare
-        public static void removeCustomer()
+        public static Customer GetCustomer()
         {
+            // function that shows all customer
             Console.WriteLine("");
-            Console.WriteLine("Write the full name of the customer you'd like to delete!");
-            string customerToDelete = Console.ReadLine();
-            Customer objectToDelete = null;
+            Console.WriteLine("Write the full name of the customer: ");
+            string customer = Console.ReadLine();
+            Customer objectresult = null;
             foreach (Customer info in customerlist)
             {
-                if (info.name == customerToDelete)
-                    objectToDelete = info;
+                if (info.name == customer)
+                    objectresult = info;
             }
+            return objectresult;
+        }
+        //a function that deletes customer
+        public static void removeCustomer()
+        {
+            Customer objectToDelete = GetCustomer();
             customerlist.Remove(objectToDelete);
             Console.Clear();
         }
 
-        /*public static void addBalance()
-        {
-            Console.Clear();
-            Console.WriteLine("");
-            Console.WriteLine("Write the full name of the customer you'd like to make a deposit!");
-            int customerBalanceAdd = int.Parse(Console.ReadLine());
-            Customer balanceToAdd = null;
-            balanceToAdd = int.Parse(   Console.ReadLine());
-            foreach (Customer info in customerlist)
-            {
-                if (info.balance == customerBalanceAdd)
-                    balanceToAdd = info;
-            }
-            customerlist.Add(balanceToAdd);
-            Console.Clear();
-        }*/
+
+        
     }
 }
